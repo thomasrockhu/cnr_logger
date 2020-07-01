@@ -1,11 +1,15 @@
 
 # README #
 
-[![Build Status](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger.svg?branch=master)](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger)
+service    | Kinetic | Melodic | Master
+---------- | ------- | ------- | ------
+Travis     | [![Build Status](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger.svg?branch=kinetic-devel)](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger)
+           | [![Build Status](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger.svg?branch=melodic-devel)](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger)
+           | [![Build Status](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger.svg?branch=master)       ](https://travis-ci.org/CNR-STIIMA-IRAS/cnr_logger)
 
 ### What is this repository for? ###
 
-* The package has been designed to have a loger separated from the standard ros logging functions. It uses the same core library, log4cxx. The main difference consists of that you can enable or disable the logging to screen and/or to file just using a parameter.
+* The package has been designed to have a logger separated from the ros pipeline logging functions. It uses the same core library, log4cxx. The main difference consists of that you can enable or disable the logging to screen and/or to file just using a parameter.
 
 ### How do I get set up? ###
 

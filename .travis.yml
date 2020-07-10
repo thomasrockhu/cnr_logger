@@ -3,7 +3,7 @@
 sudo: required
 cache:
   - apt
-  
+
 branches:
   only:
   - master
@@ -40,10 +40,7 @@ env:
     # Set the python path manually to include /usr/-/python2.7/dist-packages
     # as this is where apt-get installs python packages.
     - PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
-    - CODECOV_TOKEN="dc6c3b82-47d4-4d2d-99a4-0aa76a4640ef"
-    - CODECOV_URL=https://codecov.io/gh/CNR-STIIMA-IRAS
     - CODECOV_WORKING_DIR="build/$PROJECT_NAME/"
-    
 
 before_install:
   - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
@@ -57,7 +54,6 @@ before_install:
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
   - sudo apt install tree
   - sudo apt install python-coverage
-  - pip install codecov --user
   - source /opt/ros/$ROS_DISTRO/setup.bash
   # Prepare rosdep to install dependencies.
   - sudo rosdep init
@@ -71,7 +67,7 @@ install:
   - catkin config --cmake-args -DENABLE_COVERAGE_TESTING=ON -DCMAKE_BUILD_TYPE=Debug
   # Create the devel/setup.bash (run catkin_make with an empty workspace) and
   # source it to set the path variables.
-  - catkin build -cs 
+  - catkin build -cs
   - source devel/setup.bash
   # Add the package under integration to the workspace using a symlink.
   - cd ~/catkin_ws/src
@@ -110,4 +106,4 @@ after_success:
   - cat ~/catkin_ws/build/cnr_logger/cnr_logger_coverage_report.base
   - rm "~/catkin_ws/build/$PROJECT_NAME/$PROJECT_NAME_COVER_REPORT.info.cleaned"
   - rm "~/catkin_wsbuild/$PROJECT_NAME/$PROJECT_NAME_COVER_REPORT.info.removed"
-  - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN" -X gcov -X coveragepy
+  - bash <(curl -s https://codecov.io/bash) -X gcov
